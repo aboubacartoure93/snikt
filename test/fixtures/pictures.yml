@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  xpos: MyString
+  ypos: MyString
+  zpos: MyString
+  background: false
+  animations: MyString
+  page_id: 
+
+two:
+  xpos: MyString
+  ypos: MyString
+  zpos: MyString
+  background: false
+  animations: MyString
+  page_id: 

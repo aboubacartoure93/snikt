@@ -1,0 +1,22 @@
+<p>This page has <%= @page.pictures.size %> pictures</p>
+
+<%= content_tag :section, class: "sidebar" do %>
+	<%= content_tag :h3, "New element" %>
+		<%= form_for @url, html: { multipart: true } do |f| %>
+		  <p><%= f.text_field :xpos, placeholder: "x position" %></p>
+		  <p><%= f.text_field :ypos, placeholder: "y position" %></p>
+		  <p><%= f.text_field :zpos, placeholder: "z position" %></p>
+		  <p><%= f.text_field :animations, placeholder: "animations" %></p>
+		  <p><%= f.check_box :background %></p>
+		  <p><%= f.file_field :image %><p>
+			<p><%= f.submit %><p>
+	<% end %>
+<% end %>
+<% bg_img = @page.bg ? asset_path(@page.bg.image.url) : "" %>
+<%= content_tag_for :section, @page, style: "background-image: url(#{bg_img});" do %>
+	<% for pic in @page.images %>
+		<%= content_tag :div, style: pic.placement, data: {animations: pic.animations} do %>
+		 <%= image_tag pic.image.url, style: pic.style %>
+		<% end %>
+	<% end %>
+<% end %>

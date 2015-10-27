@@ -1,0 +1,5 @@
+<%= content_tag_for :div, book do %>
+	<%= content_tag :h3, link_to(book.title, book) %>
+	<%= content_tag :p, book.description %>
+	<%= content_tag :p, "published #{time_ago_in_words(book.created_at)} ago" %>
+<% end %>

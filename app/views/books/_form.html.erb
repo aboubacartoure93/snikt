@@ -1,0 +1,26 @@
+<%= form_for @book do |f| %>
+
+	<% if @book.errors.any? %>
+		<% for message in @book.errors.full_messages %>
+			<%= content_tag :p, message %>
+		<% end %>
+	<% end %>
+
+	<%= content_tag :p do %>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	<% end %>
+	<%= content_tag :p do %>
+		<%= f.label :author %>
+		<%= f.text_field :author %>
+	<% end %>
+	<%= content_tag :p do %>
+		<%= f.label :description %>
+		<%= f.text_area :description %>
+	<% end %>
+	<%= content_tag :p do %>
+		<%= f.submit %>
+	<% end %>
+
+
+<% end %>

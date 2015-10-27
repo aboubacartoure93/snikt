@@ -1,0 +1,11 @@
+<%= form_for @url, html: { multipart: true } do |f| %>
+	<%= f.fields_for :pictures, @picture do |pic| %>
+	  <p><%= pic.text_field :xpos, placeholder: "x position" %></p>
+	  <p><%= pic.text_field :ypos, placeholder: "y position" %></p>
+	  <p><%= pic.text_field :zpos, placeholder: "z position" %></p>
+	  <p><%= pic.text_field :animations, placeholder: "animations" %></p>
+	  <p><%= pic.check_box :background %></p>
+	  <p><%= pic.file_field :image %><p>
+	<% end %>
+	<p><%= f.submit %><p>
+<% end %>
