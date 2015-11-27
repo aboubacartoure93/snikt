@@ -1,7 +1,7 @@
 <p>This page has <%= @page.pictures.size %> pictures</p>
 
 <%= content_tag :section, class: "sidebar" do %>
-	<%= content_tag :h3, "New element" %>
+	<%= content_tag :h3, "New picture" %>
 		<%= form_for @url, html: { multipart: true } do |f| %>
 		  <p><%= f.text_field :xpos, placeholder: "x position" %></p>
 		  <p><%= f.text_field :ypos, placeholder: "y position" %></p>
@@ -15,8 +15,9 @@
 <% bg_img = @page.bg ? asset_path(@page.bg.image.url) : "" %>
 <%= content_tag_for :section, @page, style: "background-image: url(#{bg_img});" do %>
 	<% for pic in @page.images %>
-		<%= content_tag :div, style: pic.placement, data: {animations: pic.animations} do %>
+		<%= content_tag_for :div, pic, class: "dragable", style: pic.placement, 
+		data: {animations: pic.animations, updateurl: picture_path(pic.id)} do %>
 		 <%= image_tag pic.image.url, style: pic.style %>
 		<% end %>
 	<% end %>
-<% end %>
+<% end %> 
